@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax 1 - text File</title>
+</head>
+<body>
+        <div class="container form-inline">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="queryword" id="queryword" aria-label="Search">
+                
+              
+        
+        
+    <button id="button">Get Text File</button>  </div>
+    <div id="text"></div>
+
+    <script>
+    document.getElementById('button').addEventListener('click',loadText);
+    
+    function loadText(){
+        query = document.getElementById('queryword').value;
+        //create xhr object
+        var xhr = new XMLHttpRequest();
+        // open - type, url/filename, async
+        xhr.open('GET','https://www.googleapis.com/customsearch/v1?key=AIzaSyD_nWrgHIbZ1pnW-hg074QR5zYDVp6bA_Y&cx=005718232593417197296:xuhhbfvnqiy&q='+query+'&callback=hndlr', true);
+
+        // optional - used for loaders 
+        // xhr.onprogress = function(){
+          //  console.log("readystate: ", xhr.readyState);
+        //}
+
+        xhr.onload = function (){
+            if (this.status ==200){
+                //console.log(this.responseText);
+                document.getElementById('text').innerHTML = this.responseText;
+            }
+        }
+
+
+xhr.onerror = function (){
+    consolelog('Request Error...');
+}
+
+ //   xhr.onreadystatechange = function(){     
+ //       if (this.readyState == 4 && this.status == 200) {
+ //               console.log(this.responseText);
+ //       }
+ //   }
+
+            //sends request
+        xhr.send();
+    }
+
+
+
+    </script>
+</body>
+</html>

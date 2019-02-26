@@ -12,7 +12,7 @@ if(empty($selector)||empty($validator)){
    header("Location:../webpages/create-new-password.php?newpwd=empty");
    exit();
 }else if ($password != $passwordRepeat){
-    header("Location: ../webpages/create-new-password.php?newpwd=pwdnotsame");
+    header("Location: ../webpages/create-new-password.php?newpwd=pwdnotsame")
 }
 
 $currentDate = date("U");
@@ -85,7 +85,7 @@ else{
                         else{
                             mysqli_stmt_bind_param($stmt, "s", $tokenEmail );
                             mysqli_stmt_execute($stmt);
-                            header("Location:../signup.php?newpwd=passwordupdated");
+                            header("Location:../signup.php?newpwd=passwordupdated")
                         }
                     }        
                 }
@@ -101,7 +101,7 @@ else{
 
     }
 }
-
+}
 else{
-    header("Location: ../index.php");
+    header("Location: ../index.php")
 }
